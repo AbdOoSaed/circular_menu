@@ -44,7 +44,7 @@ class CircularMenu extends StatefulWidget {
 
   /// ending angle in clockwise radian
   final double endingAngleInRadian;
-  final Image image;
+  final AnimatedIconData toggleButtonAnimatedIconData;
 
   /// creates a circular menu with specific [radius] and [alignment] .
   /// [toggleButtonElevation] ,[toggleButtonPadding] and [toggleButtonMargin] must be
@@ -65,7 +65,7 @@ class CircularMenu extends StatefulWidget {
     this.toggleButtonPadding = 10,
     this.toggleButtonSize = 40,
     this.toggleButtonIconColor,
-    this.image,
+    this.toggleButtonAnimatedIconData = AnimatedIcons.menu_close,
     this.toggleButtonIconData,
     this.key,
     this.startingAngleInRadian,
@@ -234,7 +234,15 @@ class CircularMenuState extends State<CircularMenu>
             }
           },
           boxShadow: widget.toggleButtonBoxShadow,
-          image: widget.toggleButtonIconData == null ? widget.image : null,
+          animatedIcon: widget.toggleButtonIconData == null
+              ? AnimatedIcon(
+                  icon: widget
+                      .toggleButtonAnimatedIconData, //AnimatedIcons.menu_close,
+                  size: widget.toggleButtonSize,
+                  color: widget.toggleButtonIconColor ?? Colors.white,
+                  progress: _animation,
+                )
+              : null,
         ),
       ),
     );

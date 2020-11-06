@@ -10,9 +10,7 @@ class CircularMenuItem extends StatelessWidget {
   final double padding;
   final double margin;
   final List<BoxShadow> boxShadow;
-
-  /// if animatedIcon and icon are passed, icon will be ignored
-  final AnimatedIcon animatedIcon;
+  final Image image;
 
   /// creates a menu item .
   /// [onTap] must not be null.
@@ -24,12 +22,13 @@ class CircularMenuItem extends StatelessWidget {
     this.iconSize = 30,
     this.boxShadow,
     this.iconColor,
-    this.animatedIcon,
+    this.image,
     this.padding = 10,
     this.margin = 10,
   })  : assert(onTap != null),
         assert(padding >= 0.0),
         assert(margin >= 0.0);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,13 +50,13 @@ class CircularMenuItem extends StatelessWidget {
           child: InkWell(
             child: Padding(
               padding: EdgeInsets.all(padding),
-              child: animatedIcon == null
+              child: image == null
                   ? Icon(
                       icon,
                       size: iconSize,
                       color: iconColor ?? Colors.white,
                     )
-                  : animatedIcon,
+                  : image,
             ),
             onTap: onTap,
           ),

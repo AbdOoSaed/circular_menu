@@ -221,6 +221,7 @@ class CircularMenuState extends State<CircularMenu>
           icon: widget.toggleButtonIconData,
           iconSize: widget.toggleButtonSize,
           margin: widget.toggleButtonMargin,
+          iconColor: widget.toggleButtonIconColor,
           color: widget.toggleButtonColor ?? Theme.of(context).primaryColor,
           padding: (-_animation.value * widget.toggleButtonPadding * 0.5) +
               widget.toggleButtonPadding,
@@ -233,15 +234,15 @@ class CircularMenuState extends State<CircularMenu>
             }
           },
           boxShadow: widget.toggleButtonBoxShadow,
-          animatedIcon: widget.toggleButtonIconData == null ?
-            AnimatedIcon(
-              icon:
-              widget.toggleButtonAnimatedIconData, //AnimatedIcons.menu_close,
-              size: widget.toggleButtonSize,
-              color: widget.toggleButtonIconColor ?? Colors.white,
-              progress: _animation,
-            )
-            : null,
+          animatedIcon: widget.toggleButtonIconData == null
+              ? AnimatedIcon(
+                  icon: widget
+                      .toggleButtonAnimatedIconData, //AnimatedIcons.menu_close,
+                  size: widget.toggleButtonSize,
+                  color: widget.toggleButtonIconColor ?? Colors.white,
+                  progress: _animation,
+                )
+              : null,
         ),
       ),
     );
